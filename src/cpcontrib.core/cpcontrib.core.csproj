@@ -7,7 +7,7 @@
     <ProjectGuid>{EFC673FE-114C-4108-B2A8-B9041D30B66A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>cpcontrib.core</RootNamespace>
+    <RootNamespace>CrownPeak.CMSAPI.Custom_Library</RootNamespace>
     <AssemblyName>cpcontrib.core</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

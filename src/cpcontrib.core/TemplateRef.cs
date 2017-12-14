@@ -5,7 +5,7 @@ using System.Text;
 using CrownPeak.CMSAPI;
 
 //#namespace {generated}
-namespace cpcontrib.core
+namespace CrownPeak.CMSAPI.Custom_Library
 {
 
 	/// <summary>
