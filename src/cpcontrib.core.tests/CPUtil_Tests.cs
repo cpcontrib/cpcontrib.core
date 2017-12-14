@@ -14,7 +14,7 @@ namespace cpcontrib.core.tests
 	public class CPUtil_Tests
 	{
 
-
+		#region MakeDictionary
 		[Test]
 		public void MakeDictionary_duplicate_values_throws()
 		{
@@ -59,6 +59,71 @@ namespace cpcontrib.core.tests
 
 
 		}
+		#endregion
+
+		#region EmptyFallbacks
+
+		[Test]
+		public void EmptyFallbacks_no_params_returns_null()
+		{
+			//arrange
+
+
+			//act
+			var actual = CPUtil.EmptyFallback((string[])null);
+
+			//assert
+			actual.Should().BeNull();
+		}
+
+		[Test]
+		public void EmptyFallbacks()
+		{
+			//arrange
+			var values = new string[] { null, "", "One" };
+
+			//act
+			var actual = CPUtil.EmptyFallback(values);
+
+			//assert
+			actual.Should().Be("One");
+		}
+
+		[Test]
+		public void EmptyFallbacks_bad_funcs()
+		{
+			Assert.Throws<ApplicationException>(() => {
+				CPUtil.EmptyFallback(() => { throw new ApplicationException(); });
+			});
+
+		}
+
+		//[Test]
+		//public void EmptyFallbacks_bad_funcs2()
+		//{
+		//	Assert.Throws<ApplicationException>(() => {
+		//		CPUtil.EmptyFallback(
+		//			() => "",
+		//			() => { throw new ApplicationException(); },
+		//			"");
+		//	});
+
+		//}
+
+
+		#endregion
+
+		/*
+				[Test]
+				public void TestMethod()
+				{
+					//arrange
+
+					//act
+
+					//assert
+				}
+		*/
 
 	}
 }

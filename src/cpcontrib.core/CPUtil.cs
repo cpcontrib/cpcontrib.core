@@ -29,5 +29,41 @@ namespace CrownPeak.CMSAPI.Custom_Library
 			return dictionary;
 		}
 
+		/// <summary>
+		/// Tests each argument for null or empty, and returns first one that has a string value.
+		/// </summary>
+		/// <param name="args"></param>
+		/// <returns></returns>
+		public static string EmptyFallback(params string[] args)
+		{
+			if(args == null || args.Length == 0) return null;
+
+			for(int i = 0; i < args.Length; i++)
+			{
+				string value = args[i];
+				if(String.IsNullOrEmpty(value) == false) return value;
+			}
+
+			return "";
+		}
+
+		///// <summary>
+		///// Tests each argument for null or empty, and returns first one that has a string value.
+		///// </summary>
+		///// <param name="args"></param>
+		///// <returns></returns>
+		//public static string EmptyFallback(params Func<string>[] funcs)
+		//{
+		//	if(funcs == null || funcs.Length == 0) return null;
+
+		//	for(int i = 0; i < funcs.Length; i++)
+		//	{
+		//		string value = funcs[i]();
+		//		if(String.IsNullOrEmpty(value) == false) return value;
+		//	}
+
+		//	return "";
+		//}
+
 	}
 }
