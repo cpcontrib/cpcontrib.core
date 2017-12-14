@@ -2,6 +2,6 @@
 CPContrib.Core for internal CrownPeak work
 
 ```
-nuget install cpcontrib.core
-nuget install cpcontrib.core --namespace Component_Library
+paket install cpcontrib.core
+paket install cpcontrib.core --namespace Component_Library
 ```
