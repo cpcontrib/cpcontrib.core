@@ -89,14 +89,14 @@ namespace cpcontrib.core.tests
 			actual.Should().Be("One");
 		}
 
-		[Test]
-		public void EmptyFallbacks_bad_funcs()
-		{
-			Assert.Throws<ApplicationException>(() => {
-				CPUtil.EmptyFallback(() => { throw new ApplicationException(); });
-			});
+		//[Test]
+		//public void EmptyFallbacks_bad_funcs()
+		//{
+		//	Assert.Throws<ApplicationException>(() => {
+		//		CPUtil.EmptyFallback(() => { throw new ApplicationException(); });
+		//	});
 
-		}
+		//}
 
 		//[Test]
 		//public void EmptyFallbacks_bad_funcs2()
