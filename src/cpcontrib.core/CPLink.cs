@@ -15,43 +15,89 @@ namespace CrownPeak.CMSAPI.Custom_Library
 	{
 		public CPLink(CrownPeak.CMSAPI.PanelEntry panel, string baseName)
 		{
-			_Source = new PanelEntryWrapper(panel);
+			this._Source = new global::CPContrib.Core.FieldAccessors.PanelEntryWrapper(panel);
+			_BaseName = baseName;
+		}
+		public CPLink(CrownPeak.CMSAPI.Asset asset, string baseName)
+		{
+			this._Source = new global::CPContrib.Core.FieldAccessors.AssetWrapper(asset);
 			_BaseName = baseName;
 		}
 
-		private IFieldAccessor _Source;
+		private CPContrib.Core.FieldAccessors.IFieldAccessor _Source;
 		private string _BaseName;
 
+		/// <summary>
+		/// Gets a final href for the given link.  If external, returns the specified url.  If internal, returns a link to the target asset, if possible.
+		/// </summary>
+		/// <returns>an href for the current link to external or internal resource</returns>
 		public string GetHref()
 		{
 			string href;
 
-			if(_Source.Raw[_BaseName + "_link_type"] == "External")
+			if(LinkType == "External")
 			{
-				href = _Source.Raw[_BaseName + "_link_external"];
-				return href;
+				return this.GetExternalHref();
 			}
 			else
 			{
-				var asset = GetTargetAsset();
+				var asset = _GetTargetAsset();
 				href = asset.GetLink();
 				return href;
 			}
 		}
 
-		public string GetLinkType()
+		/// <summary>
+		/// Gets the type of link that was specified.
+		/// </summary>
+		public string LinkType
 		{
-			return _Source.Raw[_BaseName + "_link_type"];
+			get { return _Source.Raw[_BaseName + "_link_type"]; }
 		}
 
+		/// <summary>
+		/// Gets the external href.  Will return empty string if none specified or if the link type is Internal.
+		/// </summary>
+		/// <returns></returns>
+		public string GetExternalHref()
+		{
+			string href;
+			return href = _Source.Raw[_BaseName + "_link_external"];
+		}
 
-		public Asset GetTargetAsset()
+		private Asset _GetTargetAsset()
 		{
 			var asset = Asset.Load(_Source.Raw["upload#" + _BaseName + "_link_internal"]);
 			return asset;
 		}
 
+		/// <summary>
+		/// Gets the internal asset targeted by this link.  Will return empty string if no asset was selected or if the link type is external.
+		/// </summary>
+		/// <returns></returns>
+		public string GetInternalAssetPath()
+		{
+			return _Source.Raw["upload#" + _BaseName + "_link_internal"];
+		}
 
+		public override string ToString()
+		{
+			StringBuilder sb = new StringBuilder();
+			sb.Append("CPLink: { Type=").Append(this.LinkType);
+
+			if(this.LinkType == "External")
+			{
+				sb.AppendFormat(" Href=\"{0}\"", this.GetExternalHref());
+			}
+			else
+			{
+				sb.AppendFormat(" TargetAsset=\"{0}\"", this.GetInternalAssetPath());
+			}
+
+			sb.Append(" }");
+
+			return sb.ToString();
+		}
 
 	}
 
