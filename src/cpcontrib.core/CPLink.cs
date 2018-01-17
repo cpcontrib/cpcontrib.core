@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CrownPeak.CMSAPI;
 
-namespace CrownPeak.CMSAPI.Custom_Library
+namespace CPContrib.Core
 {
 	using CPContrib.Core.FieldAccessors;
 
