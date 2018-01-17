@@ -84,7 +84,7 @@ namespace CPContrib.Core
 		public override string ToString()
 		{
 			StringBuilder sb = new StringBuilder();
-			sb.Append("CPLink: { Type=").Append(this.LinkType);
+			sb.Append("CPLink { Type=").Append(this.LinkType);
 
 			if(this.LinkType == "External")
 			{
