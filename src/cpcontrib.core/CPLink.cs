@@ -31,7 +31,7 @@ namespace CrownPeak.CMSAPI.Custom_Library
 		/// Gets a final href for the given link.  If external, returns the specified url.  If internal, returns a link to the target asset, if possible.
 		/// </summary>
 		/// <returns>an href for the current link to external or internal resource</returns>
-		public string GetHref()
+		public string GetHref(IAssetRepository assetRepo)
 		{
 			string href;
 
@@ -41,7 +41,7 @@ namespace CrownPeak.CMSAPI.Custom_Library
 			}
 			else
 			{
-				var asset = _GetTargetAsset();
+				var asset = _GetTargetAsset(assetRepo);
 				href = asset.GetLink();
 				return href;
 			}
@@ -65,9 +65,9 @@ namespace CrownPeak.CMSAPI.Custom_Library
 			return href = _Source.Raw[_BaseName + "_link_external"];
 		}
 
-		private Asset _GetTargetAsset()
+		private Asset _GetTargetAsset(IAssetRepository assetRepo)
 		{
-			var asset = Asset.Load(_Source.Raw["upload#" + _BaseName + "_link_internal"]);
+			var asset = assetRepo.Load(_Source.Raw["upload#" + _BaseName + "_link_internal"]);
 			return asset;
 		}
 
