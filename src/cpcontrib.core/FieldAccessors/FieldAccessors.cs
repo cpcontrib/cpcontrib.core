@@ -1,5 +1,6 @@
 ﻿using CrownPeak.CMSAPI;
 
+//# namespace: $rootnamespace$.FieldAccessors
 namespace CPContrib.Core.FieldAccessors
 {
 	public abstract class IFieldAccessor
@@ -22,10 +23,11 @@ namespace CPContrib.Core.FieldAccessors
 		private Asset _Asset;
 		private PanelEntry _Panel;
 
+		protected RawWrapper() { }
 		public RawWrapper(Asset asset) { this._Asset = asset; }
 		public RawWrapper(PanelEntry panel) { this._Panel = panel; }
 
-		public string this[string key]
+		public virtual string this[string key]
 		{
 			get
 			{

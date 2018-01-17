@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CrownPeak.CMSAPI;
 
-namespace CrownPeak.CMSAPI.Custom_Library
+namespace CPContrib.Core
 {
 	using CPContrib.Core.FieldAccessors;
 
@@ -13,14 +14,10 @@ namespace CrownPeak.CMSAPI.Custom_Library
 	/// </summary>
 	public class CPLink
 	{
-		public CPLink(CrownPeak.CMSAPI.PanelEntry panel, string baseName)
+		public CPLink(CPContrib.Core.FieldAccessors.IFieldAccessor source, string baseName)
 		{
-			this._Source = new global::CPContrib.Core.FieldAccessors.PanelEntryWrapper(panel);
-			_BaseName = baseName;
-		}
-		public CPLink(CrownPeak.CMSAPI.Asset asset, string baseName)
-		{
-			this._Source = new global::CPContrib.Core.FieldAccessors.AssetWrapper(asset);
+			if(source == null) throw new ArgumentNullException("source");
+			this._Source = source;
 			_BaseName = baseName;
 		}
 
@@ -83,7 +80,7 @@ namespace CrownPeak.CMSAPI.Custom_Library
 		public override string ToString()
 		{
 			StringBuilder sb = new StringBuilder();
-			sb.Append("CPLink: { Type=").Append(this.LinkType);
+			sb.Append("CPLink { Type=").Append(this.LinkType);
 
 			if(this.LinkType == "External")
 			{
