@@ -77,6 +77,21 @@ namespace CPContrib.Core
 			return _Source.Raw["upload#" + _BaseName + "_link_internal"];
 		}
 
+		/// <summary>
+		/// Generates the target attribute for a hyperlink
+		/// </summary>
+		/// <returns></returns>
+		public string GetTargetAttribute()
+		{
+			string target = _Source.Raw[_BaseName + "_target"];
+			if(string.IsNullOrEmpty(target) == false)
+			{
+				return " target=\"" + target + "\"";
+			}
+
+			return "";
+		}
+
 		public override string ToString()
 		{
 			StringBuilder sb = new StringBuilder();
