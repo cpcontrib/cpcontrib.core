@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CrownPeak.CMSAPI.Custom_Library
+namespace CPContrib.Core
 {
 	public static class CPUtil
 	{
