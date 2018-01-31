@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CrownPeak.CMSAPI.Custom_Library
+namespace CPContrib.Core
 {
+	using CrownPeak.CMSAPI;
+
 	public static class CPUtil
 	{
 
@@ -64,6 +66,40 @@ namespace CrownPeak.CMSAPI.Custom_Library
 
 		//	return "";
 		//}
+
+		public static Asset EnsureFoldersExist(AssetPath assetPath, Asset model = null)
+		{
+			string[] folderPath = assetPath.ToArray();
+
+			int index = 0;
+			Asset saveLocation = Asset.Load(0); //load root asset first
+			Asset testFolder = null;
+
+			do
+			{
+				testFolder = Asset.Load(folderPath[index]);
+
+				if(testFolder.IsLoaded == false)
+				{
+					testFolder = Asset.CreateFolder(folderPath[index], saveLocation, FolderType.Folder);
+				}
+
+				saveLocation = testFolder;
+
+			} while(index++ < folderPath.Length);
+
+			//dont return a null
+			if(testFolder == null) testFolder = Asset.Load(-1);
+
+			return testFolder;
+		}
+
+		public static Asset EnsureFoldersExist(string assetPath, Asset model = null)
+		{
+			return EnsureFoldersExist(new AssetPath(assetPath), model);
+		}
+
+
 
 	}
 }

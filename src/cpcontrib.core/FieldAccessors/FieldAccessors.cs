@@ -1,8 +1,10 @@
-﻿using CrownPeak.CMSAPI;
+﻿
 
 //# namespace: $rootnamespace$.FieldAccessors
 namespace CPContrib.Core.FieldAccessors
 {
+	using CrownPeak.CMSAPI;
+
 	public abstract class IFieldAccessor
 	{
 		abstract public string this[string key] { get; }
