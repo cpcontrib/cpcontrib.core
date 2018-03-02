@@ -1,12 +1,12 @@
-﻿using CrownPeak.CMSAPI.Custom_Library;
-using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using NUnit.Framework;
 using FluentAssertions;
+using CPContrib.Core;
 
 namespace cpcontrib.core.tests
 {
