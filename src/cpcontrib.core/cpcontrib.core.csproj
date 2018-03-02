@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CMSAPIProxy">
-      <HintPath>..\..\..\..\..\Users\Eric\AppData\Local\CrownPeak\CMSAPIDlls\CMSAPIProxy.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -60,4 +57,14 @@
   </Target>
   -->
   <Import Project="..\..\.paket\paket.targets" />
+  <ItemGroup>
+    <Reference Include="CMSAPIProxy">
+      <HintPath>..\..\packages\CrownPeak.CMSAPIProxy\lib\CMSAPIProxy.dll</HintPath>
+      <Private>True</Private>
+      <Paket>True</Paket>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="paket.references" />
+  </ItemGroup>
 </Project>
