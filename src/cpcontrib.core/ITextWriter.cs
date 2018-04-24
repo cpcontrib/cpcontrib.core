@@ -1,4 +1,5 @@
-﻿#region /***cppack_BOF:ITextWriter.cs***/
+﻿//!packer:combine
+//!packed_region:ITextWriter
 namespace CrownPeak.CMSAPI
 {
 	public interface ITextWriter
@@ -59,4 +60,3 @@ namespace CPContrib.Core
 	}
 
 }
-#endregion /***cppack_EOF:ITextWriter.cs***/

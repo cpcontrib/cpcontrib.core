@@ -1,9 +1,11 @@
-﻿using System;
+﻿//!packer:combine
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace /*static_namespace:true*/CPContrib.Core
+//!packed_region:AssetRef/TemplateRef/IAssetRef
+namespace CPContrib.Core
 {
 	using CrownPeak.CMSAPI;
 
