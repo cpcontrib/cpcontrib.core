@@ -86,10 +86,7 @@ namespace /*static_namespace:true*/CPContrib.Core
 			get { return this._Id; }
 		}
 
-#region IAssetRef members
 		string IAssetRef.Path { get { return this.AssetPath.ToString(); } }
-		int IAssetRef.Id { get { return this.Id; } }
-#endregion
 
 
 	}
