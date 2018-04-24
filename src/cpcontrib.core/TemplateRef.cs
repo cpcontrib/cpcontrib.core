@@ -2,16 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using CrownPeak.CMSAPI;
 
-//#namespace {generated}
-namespace CPContrib.Core
+namespace /*static_namespace:true*/CPContrib.Core
 {
+	using CrownPeak.CMSAPI;
+
+	/// <summary>
+	/// Interface for consolidating of TemplateRef and AssetRef
+	/// </summary>
+	public interface IAssetRef
+	{
+		/// <summary>
+		/// Gets the Path for this IAssetRef instance
+		/// </summary>
+		string Path { get; }
+		/// <summary>
+		/// Gets the Id for this IAssetRef instance
+		/// </summary>
+		int Id { get; }
+	}
 
 	/// <summary>
 	/// Provides a reference to a CrownPeak Template.
 	/// </summary>
-	public class TemplateRef
+	public class TemplateRef : IAssetRef
 	{
 
 		public TemplateRef(string assetPath, int templateId)
@@ -35,6 +49,48 @@ namespace CPContrib.Core
 		{
 			get { return this._TemplateId; }
 		}
+
+#region IAssetRef members
+		string IAssetRef.Path { get { return this.AssetPath; } }
+		int IAssetRef.Id { get { return this.TemplateId; } }
+#endregion
+
+
+	}
+
+		/// <summary>
+	/// Provides a reference to a CrownPeak Asset.
+	/// </summary>
+	public class AssetRef : IAssetRef
+	{
+
+		public AssetRef(string assetPath, int id)
+		{
+			this._AssetPath = new AssetPath(assetPath);
+			this._Id = id;
+		}
+
+		AssetPath _AssetPath;
+		int _Id;
+
+		public AssetPath AssetPath
+		{
+			get { return this._AssetPath; }
+		}
+
+		/// <summary>
+		/// The TemplateId or AssetId of the Template.
+		/// </summary>
+		public int Id
+		{
+			get { return this._Id; }
+		}
+
+#region IAssetRef members
+		string IAssetRef.Path { get { return this.AssetPath.ToString(); } }
+		int IAssetRef.Id { get { return this.Id; } }
+#endregion
+
 
 	}
 
