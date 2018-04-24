@@ -45,6 +45,7 @@
     <Compile Include="CPUtil.cs" />
     <Compile Include="FieldAccessors\FieldAccessors.cs" />
     <Compile Include="ITemplate interfaces.cs" />
+    <Compile Include="ITextWriter.cs" />
     <Compile Include="TemplateRef.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextUtil.cs" />
