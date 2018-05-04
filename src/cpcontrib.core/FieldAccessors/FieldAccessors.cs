@@ -1,4 +1,11 @@
-﻿namespace CrownPeak.CMSAPI
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using CrownPeak.CMSAPI;
+using CrownPeak.CMSAPI.Services;
+
+namespace CrownPeak.CMSAPI
 {
 	using CPContrib.Core.FieldAccessors;
 
