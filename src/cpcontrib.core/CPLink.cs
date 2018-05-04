@@ -14,14 +14,14 @@ namespace CPContrib.Core
 	/// </summary>
 	public class CPLink
 	{
-		public CPLink(CPContrib.Core.FieldAccessors.IFieldAccessor source, string baseName)
+		public CPLink(IFieldAccessor source, string baseName)
 		{
 			if(source == null) throw new ArgumentNullException("source");
 			this._Source = source;
 			_BaseName = baseName;
 		}
 
-		private CPContrib.Core.FieldAccessors.IFieldAccessor _Source;
+		private IFieldAccessor _Source;
 		private string _BaseName;
 
 		/// <summary>

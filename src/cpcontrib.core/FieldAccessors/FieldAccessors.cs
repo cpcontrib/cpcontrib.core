@@ -1,9 +1,6 @@
-﻿
-
-//# namespace: $rootnamespace$.FieldAccessors
-namespace CPContrib.Core.FieldAccessors
+﻿namespace CrownPeak.CMSAPI
 {
-	using CrownPeak.CMSAPI;
+	using CPContrib.Core.FieldAccessors;
 
 	public abstract class IFieldAccessor
 	{
@@ -19,6 +16,13 @@ namespace CPContrib.Core.FieldAccessors
 			return new PanelEntryWrapper(panel);
 		}
 	}
+
+}
+
+//# namespace: $rootnamespace$.FieldAccessors
+namespace CPContrib.Core.FieldAccessors
+{
+	using CrownPeak.CMSAPI;
 
 	public class RawWrapper
 	{
