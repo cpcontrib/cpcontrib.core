@@ -5,7 +5,7 @@ using System.Text;
 using CrownPeak.CMSAPI;
 using CrownPeak.CMSAPI.Services;
 
-namespace CrownPeak.CMSAPI
+namespace CrownPeak.CMSAPI.CustomLibrary
 {
 	using CPContrib.Core.FieldAccessors;
 
@@ -30,6 +30,7 @@ namespace CrownPeak.CMSAPI
 namespace CPContrib.Core.FieldAccessors
 {
 	using CrownPeak.CMSAPI;
+	using CrownPeak.CMSAPI.CustomLibrary;
 
 	public class RawWrapper
 	{
