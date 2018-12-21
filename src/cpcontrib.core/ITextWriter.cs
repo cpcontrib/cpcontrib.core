@@ -1,5 +1,6 @@
-﻿//!packer:combine
-//!packed_region:ITextWriter
+﻿//!packer:targetFile=lib.cs
+
+//!packer:region=ITextWriter
 namespace CrownPeak.CMSAPI
 {
 	public interface ITextWriter

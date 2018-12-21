@@ -1,13 +1,14 @@
-﻿using System;
+﻿//!packer:targetFile=lib.cs
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CrownPeak.CMSAPI;
-using CrownPeak.CMSAPI.Services;
 
+//!packer:namespacefix=project
 namespace CrownPeak.CMSAPI.CustomLibrary
 {
-	using CPContrib.Core.FieldAccessors;
+	using CPContrib.Core.Internals;
 
 	public abstract class IFieldAccessor
 	{
@@ -16,7 +17,7 @@ namespace CrownPeak.CMSAPI.CustomLibrary
 
 		public static implicit operator IFieldAccessor(Asset asset)
 		{
-			return new AssetWrapper(asset);
+			return new FieldAccessorAssetWrapper(asset);
 		}
 		public static implicit operator IFieldAccessor(PanelEntry panel)
 		{
@@ -26,10 +27,8 @@ namespace CrownPeak.CMSAPI.CustomLibrary
 
 }
 
-//# namespace: $rootnamespace$.FieldAccessors
-namespace CPContrib.Core.FieldAccessors
+namespace CPContrib.Core.Internals
 {
-	using CrownPeak.CMSAPI;
 	using CrownPeak.CMSAPI.CustomLibrary;
 
 	public class RawWrapper
@@ -53,12 +52,12 @@ namespace CPContrib.Core.FieldAccessors
 
 	}
 
-	public class AssetWrapper : IFieldAccessor
+	public class FieldAccessorAssetWrapper : IFieldAccessor
 	{
 		private Asset _Asset;
 		private RawWrapper _RawWrapper;
 
-		public AssetWrapper(Asset asset)
+		public FieldAccessorAssetWrapper(Asset asset)
 		{
 			_Asset = asset;
 			_RawWrapper = new RawWrapper(asset);

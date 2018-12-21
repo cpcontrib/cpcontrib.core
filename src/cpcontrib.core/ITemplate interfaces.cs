@@ -1,10 +1,4 @@
-﻿//!packer:combine
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CrownPeak.CMSAPI;
-using CrownPeak.CMSAPI.Services;
+﻿//!packer:exclude
 
 namespace CPContrib.Core
 {
@@ -36,5 +30,6 @@ namespace CPContrib.Core
 	{
 		void OnPostPublish(Asset asset, PostPublishContext context);
 	}
+
 	
 }

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿//!packer:targetFile=lib.cs
+using System;
 using System.Text;
 using CrownPeak.CMSAPI;
-using CrownPeak.CMSAPI.Services;
 
 namespace CPContrib.Core
 {

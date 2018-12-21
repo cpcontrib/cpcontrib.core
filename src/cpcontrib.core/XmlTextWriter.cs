@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿//!packer:targetFile=lib.cs
+using System;
 using System.Text;
-using CrownPeak.CMSAPI;
-using CrownPeak.CMSAPI.Services;
-/* Some Namespaces are not allowed. */
+
 namespace CrownPeak.CMSAPI.CustomLibrary
 {
 
+	/// <summary>
+	/// Type for writing out well formed XML
+	/// </summary>
 	public class XmlTextWriter
 	{
 		static string fqn;

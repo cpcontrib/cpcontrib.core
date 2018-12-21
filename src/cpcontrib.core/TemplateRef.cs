@@ -1,13 +1,9 @@
-﻿//!packer:combine
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿//!packer:targetFile=lib.cs
+using CrownPeak.CMSAPI;
 
-//!packed_region:AssetRef/TemplateRef/IAssetRef
-namespace CPContrib.Core
+//!packer:sortOrder=999;region=AssetRef/TemplateRef/IAssetRef
+namespace CrownPeak.CMSAPI.CustomLibrary
 {
-	using CrownPeak.CMSAPI;
 
 	/// <summary>
 	/// Interface for consolidating of TemplateRef and AssetRef
@@ -94,3 +90,4 @@ namespace CPContrib.Core
 	}
 
 }
+//!packer:endregion
