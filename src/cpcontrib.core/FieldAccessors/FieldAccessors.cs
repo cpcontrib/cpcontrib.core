@@ -12,7 +12,10 @@ namespace CrownPeak.CMSAPI.CustomLibrary
 
 	public abstract class IFieldAccessor
 	{
-		abstract public string this[string key] { get; }
+		//must be abstract class because of the implicit operators
+
+		abstract public string this[string key] { get; set;  }
+
 		abstract public RawWrapper Raw { get; }
 
 		public static implicit operator IFieldAccessor(Asset asset)
@@ -65,7 +68,11 @@ namespace CPContrib.Core.Internals
 
 		public Asset Asset { get { return _Asset; } }
 
-		public override string this[string key] { get { return _Asset[key]; } }
+		public override string this[string key]
+		{
+			get { return _Asset[key]; }
+			set { _Asset[key] = value; }
+		}
 
 		public override RawWrapper Raw { get { return _RawWrapper; } }
 	}
@@ -82,6 +89,7 @@ namespace CPContrib.Core.Internals
 		public override string this[string key]
 		{
 			get { return this._Panel[key]; }
+			set { this._Panel[key] = value; }
 		}
 
 		public override RawWrapper Raw { get { return _RawWrapper; } }

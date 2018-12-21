@@ -1,14 +1,10 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CPContrib.Core.FieldAccessors;
 using FluentAssertions;
-using CrownPeak.CMSAPI.Custom_Library;
 
 using CPContrib.Core;
+using CPContrib.Core.Internals;
 
 namespace cpcontrib.core.tests
 {
@@ -17,14 +13,14 @@ namespace cpcontrib.core.tests
 	{
 
 		[Test]
-		public void External_ToString()
+		public void ExternalToString_Returns_ExpectedToString()
 		{
 			//arrange
-			var fa = new MockFieldAccessor();
-			fa.Set("basename_link_type", "External");
-			fa.Set("basename_link_external", "http://localhost/");
+			var asset = new MockFieldAccessor();
+			asset["basename_link_type"] = "External";
+			asset["basename_link_external"] = "http://localhost/";
 
-			var cplink = new CPLink(fa, "basename");
+			var cplink = new CPLink(asset, "basename");
 
 			//act
 			var actual = cplink.ToString();
@@ -34,14 +30,14 @@ namespace cpcontrib.core.tests
 		}
 
 		[Test]
-		public void External_GetExternalHref()
+		public void ExternalGetExternalHref_Returns_Value()
 		{
 			//arrange
-			var fa = new MockFieldAccessor();
-			fa.Set("basename_link_type", "External");
-			fa.Set("basename_link_external", "http://localhost/");
+			var asset = new MockFieldAccessor();
+			asset["basename_link_type"] = "External";
+			asset["basename_link_external"] = "http://localhost/";
 
-			var cplink = new CPLink(fa, "basename");
+			var cplink = new CPLink(asset, "basename");
 
 			//act
 			var actual = cplink.GetExternalHref();
@@ -50,7 +46,7 @@ namespace cpcontrib.core.tests
 			actual.Should().Be("http://localhost/");
 		}
 
-		public class MockFieldAccessor : CPContrib.Core.FieldAccessors.IFieldAccessor
+		public class MockFieldAccessor : CrownPeak.CMSAPI.CustomLibrary.IFieldAccessor
 		{
 			public class MockRawWrapper : RawWrapper
 			{
@@ -83,6 +79,10 @@ namespace cpcontrib.core.tests
 						return value;
 					else
 						return "";
+				}
+				set
+				{
+					this._Dictionary[key] = value;
 				}
 			}
 			public MockFieldAccessor Set(string key, string value)
