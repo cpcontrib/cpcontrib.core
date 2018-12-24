@@ -98,7 +98,53 @@ namespace CPContrib.Core
 			return EnsureFoldersExist(new AssetPath(assetPath), model);
 		}
 
+		/// <summary>
+		/// Removes any comments that use hash (#) 
+		/// If the string starts with #, it is filtered out.
+		/// </summary>
+		/// <param name="lines"></param>
+		/// <returns></returns>
+		public static IEnumerable<string> FilterHashComments(IEnumerable<string> lines)
+		{
+			//ignore any lines that startwith #
+			//ignore any part of line after a #
+			//escape this with \#
+			var stringlist = lines.Where(_ => _.StartsWith("#") == false).Select(_ => {
 
+				int indexOfHash = -1;
+
+				char current, last = (char)0x00;
+				int index = 0;
+				int length = _.Length;
+				do
+				{
+					current = _[index];
+
+					if(current == '#')
+					{
+						if(last != '\\')
+						{
+							indexOfHash = index;
+							break;
+						}
+					}
+					last = current;
+
+				} while((++index) < length);
+
+				if(indexOfHash > 0)
+				{
+					return _.Substring(0, indexOfHash);
+				}
+				else
+				{
+					return _;
+				}
+
+			});
+
+			return stringlist;
+		}
 
 	}
 }
