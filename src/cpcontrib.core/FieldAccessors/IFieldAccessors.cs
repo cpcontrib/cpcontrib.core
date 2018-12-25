@@ -8,7 +8,7 @@ using CrownPeak.CMSAPI;
 //!packer:namespacefix=project
 namespace CrownPeak.CMSAPI.CustomLibrary
 {
-	using CPContrib.Core.Internals;
+	using CPContrib.Core.Internal;
 
 	public /*interface*/abstract class IFieldAccessor
 	{
