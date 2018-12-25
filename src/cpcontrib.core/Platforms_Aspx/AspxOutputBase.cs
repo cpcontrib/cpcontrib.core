@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using CrownPeak.CMSAPI;
 
-namespace CPContrib.Core.Platforms.Aspx
+namespace CPContrib.Core
 {
 	using CPContrib.Core;
 	using CPContrib.Core.TemplateComponents;
@@ -20,18 +20,30 @@ namespace CPContrib.Core.Platforms.Aspx
 		#region constructors for DI
 		public AspxOutputBase(OutputContext context, Asset asset,
 			IAssetRepository assetRepository,
-			IAssetPathResolver assetPathResolver
+			IAssetPathResolver assetPathResolver,
+			string Typename
 
 			) : base(context, asset)
 		{
-			this._AssetRepository = assetRepository;
-			this._AssetPathResolver = assetPathResolver;
+			this.AssetRepository = assetRepository;
+			this.AssetPathResolver = assetPathResolver;
+			this.Typename = Typename;
+
+			this.PreserveCalls = false;
 		}
 
-		protected IAssetRepository _AssetRepository;
-		protected IAssetPathResolver _AssetPathResolver;
+		protected IAssetRepository AssetRepository;
+		protected IAssetPathResolver AssetPathResolver;
+		protected string Typename;
+
 		#endregion
 
+		/// <summary>
+		/// A flag for preserving code calls in published output. 
+		/// Useful for roundtrip of ASPX and MASTER files. 
+		/// Setting this true assumes using the runtime uses the correct  Platform runtime.
+		/// </summary>
+		public bool PreserveCalls { get; set; }
 
 		/// <summary>
 		/// When Publishing, writes an ASPX Directive, replacing &lt;$ $&gt; when necessary.
@@ -52,6 +64,59 @@ namespace CPContrib.Core.Platforms.Aspx
 		public void PageDirective()
 		{
 
+		}
+
+		public string ContentUrl(string assetPath, LinkType linktype = LinkType.Default)
+		{
+			//mistakenly run through here...
+			if(assetPath.StartsWith("//") || assetPath.StartsWith("http"))
+				return assetPath;
+
+			string qs = null;
+
+			int qsIndex;
+			if((qsIndex = assetPath.IndexOf("?")) > -1)
+			{
+				qs = assetPath.Substring(qsIndex);
+				assetPath = assetPath.Substring(0, qsIndex);
+			}
+			if((qsIndex = assetPath.IndexOf("#")) > -1)
+			{
+				qs = assetPath.Substring(qsIndex);
+				assetPath = assetPath.Substring(0, qsIndex);
+			}
+
+			if(PreserveCalls && context.IsPublishing)
+			{
+				string linktypeStr = GetLinkTypeCall(linktype);
+				return string.Format("<$={0}.{1}(\"{2}\")$>{3}", Typename, linktypeStr, assetPath, qs);
+
+			}
+			else
+			{
+				string returnPath = AssetPathResolver.ResolvePath(this.asset, assetPath);
+				Asset target = Asset.Load(returnPath);
+
+				return target.GetLink(LinkType.Include) + qs;
+			}
+
+
+		}
+
+		protected string GetLinkTypeCall(LinkType linktype)
+		{
+			switch(linktype)
+			{
+				case LinkType.Include:
+					return "Include";
+				default:
+					return "ContentUrl";
+			}
+		}
+
+		public string Include(string assetPath)
+		{
+			return ContentUrl(assetPath, LinkType.Include);
 		}
 
 		/// <summary>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using CrownPeak.CMSAPI;
 
-namespace CPContrib.Core.Platforms.Aspx
+namespace CPContrib.Core
 {
 
 	/// <summary>
@@ -20,7 +20,8 @@ namespace CPContrib.Core.Platforms.Aspx
 			IAssetPathResolver assetPathResolver) :
 			base(context, asset,
 				assetRepository,
-				assetPathResolver)
+				assetPathResolver,
+				"Aspx")
 		{
 
 		}

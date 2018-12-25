@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using CrownPeak.CMSAPI;
 
-namespace CPContrib.Core.Platforms.Aspx
+namespace CPContrib.Core
 {
 	/// <summary>
 	/// A Platform helper primarily focused on needs within an ASPNET Masterpage
@@ -19,7 +19,8 @@ namespace CPContrib.Core.Platforms.Aspx
 			IAssetPathResolver assetPathResolver) :
 			base(context, asset,
 				assetRepository,
-				assetPathResolver)
+				assetPathResolver,
+				"Master")
 		{
 
 		}
