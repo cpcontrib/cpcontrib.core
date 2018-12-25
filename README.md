@@ -2,6 +2,7 @@
 CPContrib.Core for internal CrownPeak work
 
 ```
-paket install cpcontrib.core
-paket install cpcontrib.core --namespace Component_Library
+cppm install cpcontrib.core
+cppm install cpcontrib.core --namespace Component_Library
+cppm install cpcontrib.core --dest /Site1/Component_Library
 ```
