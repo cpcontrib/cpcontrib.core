@@ -7,7 +7,7 @@
     <ProjectGuid>{EFC673FE-114C-4108-B2A8-B9041D30B66A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CrownPeak.CMSAPI.Custom_Library</RootNamespace>
+    <RootNamespace>CPContrib.Core</RootNamespace>
     <AssemblyName>cpcontrib.core</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -44,8 +44,8 @@
     <Compile Include="CMSOutput.cs" />
     <Compile Include="CPLink.cs" />
     <Compile Include="CPUtil.cs" />
-    <Compile Include="FieldAccessors\FieldAccessors.cs" />
-    <Compile Include="ITemplate interfaces.cs" />
+    <Compile Include="FieldAccessors\FieldAccessor_implementations.cs" />
+    <Compile Include="FieldAccessors\IFieldAccessors.cs" />
     <Compile Include="HtmlOutput.cs" />
     <Compile Include="IAssetPathResolver.cs" />
     <Compile Include="IAssetRepository.cs" />
