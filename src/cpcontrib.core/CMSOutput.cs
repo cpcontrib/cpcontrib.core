@@ -37,6 +37,11 @@ namespace CPContrib.Core
 			get { return this.ResourcesProvider; }
 		}
 
+		/// <summary>
+		/// Generates an href to the given asset that must live within the CMS. Sometimes a Platform Output specific ContentUrl call is more useful.
+		/// </summary>
+		/// <param name="assetPath"></param>
+		/// <returns></returns>
 		public string ContentUrl(string assetPath)
 		{
 			//mistakenly run through here...
