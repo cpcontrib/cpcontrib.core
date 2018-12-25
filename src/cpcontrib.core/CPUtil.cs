@@ -7,6 +7,9 @@ using CrownPeak.CMSAPI;
 namespace CPContrib.Core
 {
 
+	/// <summary>
+	/// A utility class for various operations.
+	/// </summary>
 	public static class CPUtil
 	{
 

@@ -41,15 +41,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CMSAPIExtensions.cs" />
+    <Compile Include="CMSOutput.cs" />
     <Compile Include="CPLink.cs" />
     <Compile Include="CPUtil.cs" />
     <Compile Include="FieldAccessors\FieldAccessors.cs" />
     <Compile Include="ITemplate interfaces.cs" />
+    <Compile Include="HtmlOutput.cs" />
+    <Compile Include="IAssetPathResolver.cs" />
+    <Compile Include="IAssetRepository.cs" />
+    <Compile Include="IResourcesProvider.cs" />
+    <Compile Include="Platforms_Aspx\AspxOutput.cs" />
+    <Compile Include="Platforms_Aspx\AspxOutputBase.cs" />
+    <Compile Include="Platforms_Aspx\MasterOutput.cs" />
+    <Compile Include="ResourcesProvider.cs" />
+    <Compile Include="TemplateComponents\ITemplateComponent.cs" />
+    <Compile Include="TemplateComponents\OutputComponentBase.cs" />
+    <Compile Include="Internals\Wrapper.cs" />
     <Compile Include="ITextWriter.cs" />
     <Compile Include="TemplateRef.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextUtil.cs" />
-    <Compile Include="Html.cs" />
+    <None Include="Html.cs" />
+    <Compile Include="Wrappers\AssetWrapper.cs" />
+    <Compile Include="Wrappers\OutWrapper.cs" />
     <Compile Include="XmlTextWriter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
