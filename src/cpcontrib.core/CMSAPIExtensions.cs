@@ -26,16 +26,7 @@ namespace CrownPeak.CMSAPI
 			return new AssetPath("/" + String.Join("/", assetPath.Take(assetPath.Count - parentCount)));
 		}
 
-		/// <summary>
-		/// Gets the assetPath of the immediate parent of the given asset.
-		/// </summary>
-		/// <param name="asset"></param>
-		/// <param name="parentCount">how deep in the ancestry tree to go, defaults to 1.</param>
-		/// <returns></returns>
-		public static AssetPath GetParentAssetPath(this Asset asset, int parentCount = 1)
-		{
-			return asset.AssetPath.GetParent(parentCount);
-		}
+
 
 	}
 }

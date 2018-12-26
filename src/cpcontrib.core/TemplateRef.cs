@@ -1,5 +1,5 @@
 ﻿//!packer:targetFile=lib.cs
-using CrownPeak.CMSAPI;
+using System;
 
 //!packer:sortOrder=999;region=AssetRef/TemplateRef/IAssetRef
 namespace CrownPeak.CMSAPI.CustomLibrary
@@ -46,6 +46,12 @@ namespace CrownPeak.CMSAPI.CustomLibrary
 		public int TemplateId
 		{
 			get { return this._TemplateId; }
+		}
+
+		[Obsolete("Best to directly specify TemplateId or AssetPath or other.")]
+		public static implicit operator int(TemplateRef value)
+		{
+			return value.TemplateId;
 		}
 
 #region IAssetRef members
