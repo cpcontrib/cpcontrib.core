@@ -54,6 +54,7 @@
     <Compile Include="Platforms_Aspx\AspxOutputBase.cs" />
     <Compile Include="Platforms_Aspx\MasterOutput.cs" />
     <Compile Include="ResourcesProvider.cs" />
+    <Compile Include="Stopwatch.cs" />
     <Compile Include="TemplateComponents\ITemplateComponent.cs" />
     <Compile Include="TemplateComponents\OutputComponentBase.cs" />
     <Compile Include="Internals\Wrapper.cs" />
