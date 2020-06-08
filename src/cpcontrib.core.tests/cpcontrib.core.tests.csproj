@@ -39,7 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CMSAPIExtensions_Tests.cs" />
-    <Compile Include="CPLink_Tests.cs" />
+    <None Include="CPLink_Tests.cs" />
     <Compile Include="CPUtil_FilterHashComment_Tests.cs" />
     <Compile Include="CPUtil_Tests.cs" />
     <Compile Include="TextUtil_Tests.cs" />
