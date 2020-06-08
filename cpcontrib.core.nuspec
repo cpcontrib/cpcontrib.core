@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>cpcontrib.core</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>enewton</authors>
+    <owners>enewton</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/cpcontrib/cpcontrib.core</projectUrl>
+    <!--<iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>-->
+    <description>Core components for CPContrib libraries</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>Copyright 2020</copyright>
+    <tags>Crownpeak	CPContrib</tags>
+  </metadata>
+  <file src="Build/Release/cpcontrib.core.*" target="lib" />
+</package>

@@ -77,13 +77,13 @@
   -->
   <Import Project="..\..\.paket\paket.targets" />
   <ItemGroup>
+    <None Include="paket.references" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="CMSAPIProxy">
       <HintPath>..\..\packages\CrownPeak.CMSAPIProxy\lib\CMSAPIProxy.dll</HintPath>
       <Private>True</Private>
       <Paket>True</Paket>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="paket.references" />
   </ItemGroup>
 </Project>

@@ -13,5 +13,5 @@ if errorlevel 1 (
 
 echo.
 echo ***** MSBUILD *****
-msbuild src\cpcontrib.core.sln /p:Configuration=Release /p:OutputPath=Build\Release
+msbuild src\cpcontrib.core.sln /p:Configuration=Release /p:OutputPath=..\..\Build\Release
 
